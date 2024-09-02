@@ -43,13 +43,6 @@ const FileUploadIcon = () => {
 
         getResultResponse = await axios.get('https://main-tool-code2.onrender.com/get-result');
         console.log("Response from fourth get-result:", getResultResponse.data);
-
-        const final_formData = getResultResponse.data.Batch_data_to_be_filled;
-        const final_formDataArray = getResultResponse?.data?.Batch_data_to_be_filled || [];
-        
-        setFormData(prevData => ({ ...prevData, ...final_formData }));
-        setFormData(prevData => ({ ...prevData, ...final_formDataArray }));
-
     } catch (error) {
         console.error("Error occurred:", error);
     }
