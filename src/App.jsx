@@ -107,11 +107,25 @@ const FileUploadIcon = () => {
   const handleUploadClick = async () => {
     if (selectedFiles.length > 0) {
       try {
+        // const fileInput = document.getElementById('fileInput');
+        // const formData = new FormData();
+
+        // // Append each selected file to the FormData object
+        // for (let i = 0; i < fileInput.files.length; i++) {
+        //     formData.append('files', fileInput.files[i]);
+        // }
+
+
         const formData = new FormData();
         // formData.append('file', selectedFiles[0]);
-        selectedFiles.forEach((file, index) => {
-          formData.append(`file${index + 1}`, file); // Append each file to the FormData object
-        });
+        // selectedFiles.forEach((file, index) => {
+        //   formData.append(`file${index + 1}`, file); // Append each file to the FormData object
+        // });
+        for (let i = 0; i < selectedFiles.length; i++) {
+            formData.append('files', selectedFiles[i]);
+        }
+
+        console.log(formData)
 
         const response = await fetch('https://main-tool-code2.onrender.com/upload', {
           method: 'POST',
