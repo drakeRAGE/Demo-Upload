@@ -108,7 +108,10 @@ const FileUploadIcon = () => {
     if (selectedFiles.length > 0) {
       try {
         const formData = new FormData();
-        formData.append('file', selectedFiles[0]);
+        // formData.append('file', selectedFiles[0]);
+        selectedFiles.forEach((file, index) => {
+          formData.append(`file${index + 1}`, file); // Append each file to the FormData object
+        });
 
         const response = await fetch('https://main-tool-code2.onrender.com/upload', {
           method: 'POST',
